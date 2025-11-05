@@ -1,1 +1,0 @@
-<!-- point d’entrée (router ou simple include du home_controller) -->
