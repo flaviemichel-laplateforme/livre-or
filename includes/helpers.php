@@ -770,3 +770,41 @@ function auto_translate_if_english($text)
 
     return $text;
 }
+
+/**
+ * Affiche une vue complète avec header et footer
+ * 
+ * @param string $view Chemin de la vue (ex: 'home/home', 'auth/login')
+ * @param array $data Données à passer à la vue
+ */
+function render($view, $data = [])
+{
+    // Extraire les données pour les rendre disponibles dans les vues
+    if (!empty($data)) {
+        extract($data);
+    }
+
+    // Charger le header
+    require VIEW_PATH . '/layout/header.php';
+
+    // Charger la vue principale
+    require VIEW_PATH . '/' . $view . '.php';
+
+    // Charger le footer
+    require VIEW_PATH . '/layout/footer.php';
+}
+
+/**
+ * Affiche une vue partielle sans header/footer
+ * 
+ * @param string $view Chemin de la vue
+ * @param array $data Données à passer à la vue
+ */
+function render_partial($view, $data = [])
+{
+    if (!empty($data)) {
+        extract($data);
+    }
+
+    require VIEW_PATH . '/' . $view . '.php';
+}
