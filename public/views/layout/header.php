@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <ul class='menu-header'>
                 <li><a href="<?= url() ?>">Accueil</a></li>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li><a href="<?= url('auth/logout') ?>">Déconnexion</a></li>
