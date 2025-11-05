@@ -32,6 +32,11 @@ function url($path = '')
 {
     $base_url = rtrim(BASE_URL, '/');
     $path = ltrim($path, '/');
+
+    if (empty($path)) {
+        return $base_url . '/';
+    }
+
     return $base_url . '/' . $path;
 }
 

@@ -12,5 +12,6 @@ function home_index()
         'message' => 'Bienvenue sur notre livre d\'or'
     ];
 
-    render('home/home', $data);
+
+    render('home/index', $data);
 }
