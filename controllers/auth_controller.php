@@ -1,42 +1,4 @@
 <?php
-// Contrôleur d'authentification
-
-/**
- * Affiche le formulaire de connexion ou traite la soumission
- * URL: /auth/connexion
- */
-function auth_connexion()
-{
-    // Si déjà connecté, rediriger
-    if (is_logged_in()) {
-        redirect('');
-    }
-
-    // Si le formulaire est soumis (POST)
-    if (is_post()) {
-        $login = post('login');
-        $password = post('password');
-
-        // Validation basique
-        if (empty($login) || empty($password)) {
-            set_flash('error', 'Veuillez remplir tous les champs');
-            redirect('auth/connexion');
-        }
-
-        // TODO: Vérifier les identifiants dans la base de données
-        // Pour l'instant, on simule une connexion réussie
-        $_SESSION['user_id'] = 1;
-        $_SESSION['user_login'] = $login;
-
-        set_flash('success', 'Connexion réussie !');
-        redirect('');
-    }
-
-    // Afficher le formulaire (GET)
-    render('auth/connexion', [
-        'title' => 'Connexion'
-    ]);
-}
 
 /**
  * Affiche le formulaire d'inscription ou traite la soumission
@@ -74,6 +36,17 @@ function auth_inscription()
         // TODO: Créer l'utilisateur dans la base de données
         set_flash('success', 'Inscription réussie ! Vous pouvez vous connecter.');
         redirect('auth/connexion');
+
+        // Créer l'utilisateur dans la base de données
+        $user_id = create_user($login, $password);
+
+        if ($user_id) {
+            set_flash('success', 'Inscription réussie ! Vous pouvez vous connecter.');
+            redirect('auth/connexion');
+        } else {
+            set_flash('error', 'Une erreur est survenue lors de l\'inscription');
+            redirect('auth/inscription');
+        }
     }
 
     // Afficher le formulaire (GET)
