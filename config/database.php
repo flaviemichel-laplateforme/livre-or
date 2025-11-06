@@ -16,7 +16,7 @@ define('ROOT_PATH', dirname(__DIR__));
 define('CONFIG_PATH', ROOT_PATH . '/config');
 define('CONTROLLER_PATH', ROOT_PATH . '/controllers');
 define('MODEL_PATH', ROOT_PATH . '/models');
-define('VIEW_PATH', ROOT_PATH . '/public/views');
+define('VIEW_PATH', ROOT_PATH . '/views');
 define('INCLUDE_PATH', ROOT_PATH . '/includes');
 define('CORE_PATH', ROOT_PATH . '/core');
 define('PUBLIC_PATH', ROOT_PATH . '/public');

@@ -53,8 +53,10 @@ function dispatch()
     // Nom de la fonction d'action
     $action_function = $controller_name . '_' . $action_name;
 
+
     // Vérifier si l'action existe
     if (!function_exists($action_function)) {
+        echo "ERREUR : Fonction $action_function introuvable<br>";
         load_404();
         return;
     }
