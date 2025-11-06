@@ -14,16 +14,23 @@ function create_user($login, $password)
 
 // Fichier : models/user_model.php
 
-function find_user_by_login($login)
+/**
+ * Récupère un utilisateur par son login pour la connexion.
+ * Retourne les données de l'utilisateur (tableau) si trouvé,
+ * sinon retourne false.
+ */
+function get_user_by_login($login)
 {
-    $query = "SELECT id FROM utilisateurs WHERE login = ?";
+    $query = "SELECT id, login, password FROM utilisateurs WHERE login = ?";
 
-    // db_select() retourne un tableau (vide ou non)
-    $user_data = db_select($query, [$login]);
+    // $result est un tableau de lignes
+    $result = db_select($query, [$login]);
 
-    // !empty() est le test parfait.
-    // Si $user_data N'EST PAS vide, ça retourne true (l'utilisateur existe).
-    return !empty($user_data);
+    if (empty($result)) {
+        // Cas 1 : Utilisateur non trouvé
+        return false;
+    } else {
+        // Cas 2 : Utilisateur trouvé, on retourne la première ligne
+        return $result[0];
+    }
 }
-
-// ... (et on a toujours ta fonction create_user) ...
