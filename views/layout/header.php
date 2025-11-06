@@ -16,6 +16,7 @@
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li><a href="<?= url('auth/deconnexion') ?>">Déconnexion</a></li>
                     <li><a href="<?= url('user/profile') ?>">Profil</a></li>
+                    <li><a href="<?= url('comment/livre_or') ?>">Livre d'or</a></li>
                 <?php else: ?>
                     <li><a href="<?= url('auth/connexion') ?>">Se connecter</a></li>
                     <li><a href="<?= url('auth/inscription') ?>">S'inscrire</a></li>
