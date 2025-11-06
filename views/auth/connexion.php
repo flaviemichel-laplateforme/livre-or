@@ -1,13 +1,13 @@
-<div class="container">
+<div>
     <h1>Connexion</h1>
 
     <form method="POST" action="<?= url('auth/connexion') ?>">
-        <div class="form-group">
+        <div>
             <label for="login">Nom d'utilisateur :</label>
             <input type="text" id="login" name="login" required>
         </div>
 
-        <div class="form-group">
+        <div>
             <label for="password">Mot de passe :</label>
             <input type="password" id="password" name="password" required>
         </div>

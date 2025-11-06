@@ -51,6 +51,59 @@ function auth_inscription()
 }
 
 
+function auth_connexion()
+{
+    // 1. On vérifie si le formulaire est soumis
+    if (is_post()) {
+
+        // 2. On récupère les données
+        $login = post('login');
+        $password = post('password');
+
+        // 3. On demande au Modèle de trouver l'utilisateur
+        $user = get_user_by_login($login); // Renvoie 'false' ou un tableau ['id'=>..., 'login'=>...]
+
+        // 4. On vérifie la réponse du Modèle
+        if ($user && verify_password($password, $user['password'])) {
+
+            // ===================================
+            // CAS 1 : SUCCÈS ! 
+            // $user existe ET le mot de passe est bon
+            // ===================================
+
+            // On crée les variables de session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_login'] = $user['login'];
+
+            // On met un message de bienvenue
+            set_flash('success', 'Connexion réussie ! Bienvenue ' . escape($user['login']));
+
+            // On redirige vers l'accueil (comme demandé dans ton issue)
+            redirect('home/index'); // ou juste 'index.php'
+
+        } else {
+
+            // ===================================
+            // CAS 2 : ÉCHEC
+            // Soit $user est false (login inconnu)
+            // Soit le mot de passe est mauvais
+            // ===================================
+
+            // On met le message d'erreur sécurisé et générique
+            set_flash('error', 'Login ou mot de passe incorrect.');
+        }
+    }
+
+    // 5. Si ce n'est pas du POST (ou si l'échec CAS 2 est arrivé),
+    //    on affiche la page de connexion. Le header affichera l'erreur.
+    render('auth/connexion');
+}
+
+
+
+
+
+
 /**
  * Déconnexion
  * URL: /auth/deconnexion
