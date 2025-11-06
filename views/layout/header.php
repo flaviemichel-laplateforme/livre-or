@@ -24,6 +24,27 @@
         </nav>
     </header>
 
-    <?php flash_messages(); ?>
+    <?php if (has_flash_messages()): ?>
+        <div class="flash-messages">
+            <?php
+            // 1. On récupère TOUS les types de messages
+            $all_message_types = get_flash_messages();
+
+            // 2. On boucle sur chaque TYPE (ex: 'error', 'success')
+            foreach ($all_message_types as $type => $messages_list):
+
+                // 3. On boucle sur chaque MESSAGE de ce type
+                foreach ($messages_list as $message):
+            ?>
+                    <p class="flash-message <?= escape($type) ?>">
+                        <?= escape($message) ?>
+                    </p>
+
+            <?php
+                endforeach; // Fin de la boucle des messages
+            endforeach; // Fin de la boucle des types
+            ?>
+        </div>
+    <?php endif; ?>
 
     <main>

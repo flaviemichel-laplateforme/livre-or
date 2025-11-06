@@ -53,9 +53,6 @@ function dispatch()
     // Nom de la fonction d'action
     $action_function = $controller_name . '_' . $action_name;
 
-    // DEBUG - À supprimer après
-    echo "Recherche de la fonction : $action_function<br>";
-    echo "Fonction existe ? " . (function_exists($action_function) ? 'OUI' : 'NON') . "<br>";
 
     // Vérifier si l'action existe
     if (!function_exists($action_function)) {
