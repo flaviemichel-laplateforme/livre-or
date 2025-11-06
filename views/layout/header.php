@@ -13,7 +13,7 @@
         <nav>
             <ul class='menu-header'>
                 <li><a href="<?= url('home/index') ?>">Accueil</a></li>
-                <?php if (isset($_SESSION['user_id'])): ?>
+                <?php if (is_logged_in()): ?>
                     <li><a href="<?= url('auth/deconnexion') ?>">Déconnexion</a></li>
                     <li><a href="<?= url('user/profile') ?>">Profil</a></li>
                     <li><a href="<?= url('comment/livre_or') ?>">Livre d'or</a></li>

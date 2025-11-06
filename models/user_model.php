@@ -48,3 +48,27 @@ function find_user_by_login($login)
 }
 
 // ... (et on a toujours ta fonction create_user) ...
+
+// Fichier : models/user_model.php
+
+/**
+ * Récupère un utilisateur par son ID.
+ * Retourne les données de l'utilisateur (tableau) si trouvé,
+ * sinon retourne false.
+ */
+function get_user_by_id($id)
+{
+    // On sélectionne les colonnes dont on a besoin
+    $query = "SELECT id, login FROM utilisateurs WHERE id = ?";
+
+    // On exécute la requête avec l'ID
+    $result = db_select($query, [$id]);
+
+    if (empty($result)) {
+        // Cas 1 : Utilisateur non trouvé
+        return false;
+    } else {
+        // Cas 2 : Utilisateur trouvé, on retourne la première ligne
+        return $result[0];
+    }
+}
