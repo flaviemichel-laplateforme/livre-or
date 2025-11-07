@@ -21,20 +21,47 @@ function user_profile()
 
 // Fichier : controllers/user_controller.php
 
+// Fichier : controllers/user_controller.php
+
 function update_profile()
 {
-    // 1. On vérifie si le formulaire est soumis
     if (is_post()) {
-
-        // 2. On récupère les 3 données du formulaire
         $login = post('login');
         $old_password = post('old_password');
         $new_password = post('new_password');
+        $user_id = $_SESSION['user_id'];
 
-        // ... C'est ici qu'on va mettre la logique de mise à jour ...
+        if (!empty($new_password)) {
+
+            $current_user_data = get_user_by_id($user_id);
+
+            if (verify_password($old_password, $current_user_data['password'])) {
+
+                // ===================================
+                // SUCCÈS : L'ancien mot de passe est bon.
+                // ===================================
+
+                // On appelle la fonction du Modèle pour mettre à jour la BDD
+                if (update_user_password($user_id, $new_password)) {
+                    // La BDD a été mise à jour avec succès
+                    set_flash('success', 'Votre mot de passe a été mis à jour.');
+                } else {
+                    // Il y a eu une erreur lors de la mise à jour BDD
+                    set_flash('error', 'Une erreur est survenue lors de la mise à jour du mot de passe.');
+                }
+
+                // Dans tous les cas (succès ou erreur BDD), on redirige vers le profil
+                redirect('user/profile');
+            } else {
+                // ERREUR : L'ancien mot de passe est incorrect.
+                set_flash('error', 'Votre ancien mot de passe est incorrect.');
+                redirect('user/profile');
+            }
+        }
+        // 5. On gère le changement de login
+        // ...
 
     } else {
-        // Si quelqu'un arrive sur cette URL en GET
         redirect('user/profile');
     }
 }

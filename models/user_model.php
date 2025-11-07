@@ -72,3 +72,24 @@ function get_user_by_id($id)
         return $result[0];
     }
 }
+
+// Fichier : models/user_model.php
+
+/**
+ * Met à jour le mot de passe d'un utilisateur spécifique.
+ */
+function update_user_password($user_id, $new_password)
+{
+    // 1. Hacher le nouveau mot de passe avant de le stocker
+    $hashed_password = hash_password($new_password);
+
+    // 2. Préparer la requête UPDATE
+    $query = "UPDATE utilisateurs SET password = ? WHERE id = ?";
+
+    // 3. Exécuter la requête avec les deux paramètres
+    if (db_execute($query, [$hashed_password, $user_id])) {
+        return true; // Succès
+    }
+
+    return false; // Échec
+}
