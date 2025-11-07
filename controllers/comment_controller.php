@@ -1,1 +1,2 @@
-<!-- jout / affichage commentaires -->
+<?php
+function comment_create()
