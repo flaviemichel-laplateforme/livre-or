@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? 'Mon livre d\'or' ?></title>
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
+    <link rel="stylesheet" href="<?= url('assets/home.css') ?>">
 </head>
 
 <body>
