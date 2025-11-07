@@ -6,6 +6,44 @@
         <p class="tagline">Partagez vos plus beaux moments avec ceux que vous aimez</p>
     </section>
 
+    <!-- Carrousel d'images -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <img src="<?= url('assets/img/caroussel.jpg') ?>" alt="Photo famille 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="<?= url('assets/img/caroussel2.jpg') ?>" alt="Photo famille 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="<?= url('assets/img/caroussel3.jpg') ?>" alt="Photo famille 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="<?= url('assets/img/caroussel4.jpg') ?>" alt="Photo famille 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="<?= url('assets/img/caroussel5.jpg') ?>" alt="Photo famille 5">
+            </div>
+            <div class="carousel-slide">
+                <img src="<?= url('assets/img/caroussel6.jpg') ?>" alt="Photo famille 6">
+            </div>
+
+            <!-- Boutons de navigation -->
+            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+
+            <!-- Indicateurs -->
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
+                <span class="indicator" onclick="goToSlide(5)"></span>
+            </div>
+        </div>
+    </section>
+
     <?php if (is_logged_in()): ?>
         <section class="welcome-user">
             <h2>Bonjour <?= escape($_SESSION['user_login']) ?> !</h2>
@@ -24,14 +62,14 @@
                 <span class="icon">📖</span>
                 <h3>Livre d'or</h3>
                 <p>Découvrez tous les souvenirs et messages partagés par la famille</p>
-                <a href="<?= url('comment/livre_or') ?>" class="btn btn-secondary">Voir le livre d'or</a>
+                <a href="<?= url('comment/livre_or') ?>" class="btn btn-primary">Voir le livre d'or</a>
             </div>
 
             <div class="action-card">
                 <span class="icon">👤</span>
                 <h3>Mon profil</h3>
                 <p>Gérez vos informations personnelles et votre compte</p>
-                <a href="<?= url('user/profile') ?>" class="btn btn-secondary">Voir mon profil</a>
+                <a href="<?= url('user/profile') ?>" class="btn btn-primary">Voir mon profil</a>
             </div>
         </section>
 
@@ -53,11 +91,7 @@
                     <h4>Souvenirs datés</h4>
                     <p>Chaque message est horodaté pour retrouver facilement vos souvenirs</p>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">❤️</span>
-                    <h4>Restez connectés</h4>
-                    <p>Gardez le lien avec vos proches même à distance</p>
-                </div>
+
             </div>
         </section>
 
@@ -120,10 +154,47 @@
             </div>
         </section>
     <?php endif; ?>
-
-    <section class="footer-info">
-        <p class="tagline-footer">
-            <strong>Votre album familial</strong> - Partagez, souvenez-vous, connectez-vous
-        </p>
-    </section>
 </div>
+
+<script>
+    // Carrousel automatique
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
+
+    // Fonction pour afficher une slide spécifique
+    function showSlide(n) {
+        // Retour au début ou à la fin si nécessaire
+        if (n >= totalSlides) {
+            currentSlide = 0;
+        } else if (n < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = n;
+        }
+
+        // Masquer toutes les slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+
+        // Afficher la slide actuelle
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+    }
+
+    // Fonction pour changer de slide (boutons précédent/suivant)
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    // Fonction pour aller directement à une slide (indicateurs)
+    function goToSlide(n) {
+        showSlide(n);
+    }
+
+    // Défilement automatique toutes les 5 secondes
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+</script>
