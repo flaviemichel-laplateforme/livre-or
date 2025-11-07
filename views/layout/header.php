@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?? 'Mon livre d\'or' ?></title>
     <link rel="stylesheet" href="<?= url('assets/style.css') ?>">
+    <link rel="stylesheet" href="<?= url('assets/home.css') ?>">
 </head>
 
 <body>
     <header>
+        <div class="header-brand">
+            <a href="<?= url('home/index') ?>" class="logo-link">
+                <img src="<?= url('assets/img/logo.png') ?>" alt="Logo FamilyNature" class="logo">
+                <div class="brand-text">
+                    <span class="brand-name">FamilyNature</span>
+                    <span class="brand-slogan">Vos histoires, naturellement belles.</span>
+                </div>
+            </a>
+        </div>
         <nav>
             <ul class='menu-header'>
                 <li><a href="<?= url('home/index') ?>">Accueil</a></li>
