@@ -58,8 +58,8 @@ function find_user_by_login($login)
  */
 function get_user_by_id($id)
 {
-    // On sélectionne les colonnes dont on a besoin
-    $query = "SELECT id, login FROM utilisateurs WHERE id = ?";
+    // On sélectionne les colonnes dont on a besoin (y compris password pour la vérification)
+    $query = "SELECT id, login, password FROM utilisateurs WHERE id = ?";
 
     // On exécute la requête avec l'ID
     $result = db_select($query, [$id]);
