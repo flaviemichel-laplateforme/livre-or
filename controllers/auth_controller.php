@@ -99,11 +99,6 @@ function auth_connexion()
     render('auth/connexion');
 }
 
-
-
-
-
-
 /**
  * Déconnexion
  * URL: /auth/deconnexion
