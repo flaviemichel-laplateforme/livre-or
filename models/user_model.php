@@ -93,3 +93,19 @@ function update_user_password($user_id, $new_password)
 
     return false; // Échec
 }
+
+
+function update_user_login($login, $user_id)
+{
+
+
+    // 2. Préparer la requête UPDATE
+    $query = "UPDATE utilisateurs SET login = ? WHERE id = ?";
+
+    // 3. Exécuter la requête avec les deux paramètres
+    if (db_execute($query, [$login, $user_id])) {
+        return true; // Succès
+    }
+
+    return false; // Échec
+}
