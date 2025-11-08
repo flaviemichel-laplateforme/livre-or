@@ -155,6 +155,71 @@ nav {
 
 /* FIN DU HEADER CSS */
 
+/* ========================================
+   MESSAGES FLASH
+   ======================================== */
+
+.flash-messages {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    z-index: 1000;
+    max-width: 400px;
+    animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.flash-message {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flash-message.success {
+    background: rgba(107, 142, 35, 0.15);
+    color: #556b2f;
+    border-left: 4px solid #6b8e23;
+}
+
+.flash-message.error {
+    background: rgba(211, 47, 47, 0.15);
+    color: #b71c1c;
+    border-left: 4px solid #d32f2f;
+}
+
+.flash-message.info {
+    background: rgba(25, 118, 210, 0.15);
+    color: #0d47a1;
+    border-left: 4px solid #1976d2;
+}
+
+/* Responsive messages flash */
+@media (max-width: 768px) {
+    .flash-messages {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+}
+
+/* FIN MESSAGES FLASH */
+
 
 footer {
     background: linear-gradient(135deg, #6b8e23 0%, #556b2f 100%);
@@ -877,3 +942,516 @@ footer p {
 }
 
 /* ******************FIN PAGES AUTHENTIFICATION ******************************/
+
+/* ========================================
+   PAGE PROFIL UTILISATEUR
+   Thème FamilyNature - Champs d'Olivier
+   ======================================== */
+
+.profile-page {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    background: url('../img/profil.webp') center/cover no-repeat fixed;
+    position: relative;
+}
+
+.profile-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(245, 240, 230, 0.85);
+    z-index: 1;
+}
+
+.profile-container {
+    position: relative;
+    z-index: 2;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(85, 107, 47, 0.3);
+    padding: 3rem;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.profile-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: block;
+    box-shadow: 0 4px 15px rgba(85, 107, 47, 0.25);
+    border: 4px solid #6b8e23;
+    object-fit: cover;
+}
+
+.profile-header h1 {
+    color: #556b2f;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.profile-subtitle {
+    color: #6a6a5a;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.profile-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.profile-form .form-group label {
+    display: block;
+    color: #556b2f;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.profile-form .form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e8dcc4;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box;
+}
+
+.profile-form .form-group input:focus {
+    outline: none;
+    border-color: #6b8e23;
+    box-shadow: 0 0 0 4px rgba(107, 142, 35, 0.1);
+    background: #fefdfb;
+}
+
+.profile-form .form-group input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.profile-form .btn-block {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive profil */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 2.5rem 2rem;
+        margin: 1rem;
+    }
+
+    .profile-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-page {
+        padding: 2rem 0.5rem;
+    }
+
+    .profile-container {
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
+    }
+
+    .profile-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .profile-header {
+        margin-bottom: 2rem;
+    }
+
+    .profile-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .profile-form .form-group input {
+        padding: 0.85rem;
+    }
+
+    .profile-form .btn-block {
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+}
+
+/* ******************FIN PAGE PROFIL ******************************/
+
+/* ========================================
+   PAGE LIVRE D'OR
+   Thème FamilyNature - Champs d'Olivier
+   ======================================== */
+
+.livre-or-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+
+}
+
+.livre-or-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #9aad7c 0%, #6b8e23 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(85, 107, 47, 0.3);
+    color: white;
+}
+
+.livre-or-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 4px solid white;
+    object-fit: cover;
+}
+
+.livre-or-header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.livre-or-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.btn-add-comment {
+    margin-top: 1rem;
+    background: white;
+    color: #556b2f;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add-comment:hover {
+    background: #fefdfb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Container des commentaires */
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Message quand il n'y a pas de commentaires */
+.no-comments {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(85, 107, 47, 0.1);
+}
+
+.icon-large {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.no-comments p {
+    color: #556b2f;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.no-comments .subtitle {
+    color: #8b7355;
+    font-size: 1rem;
+}
+
+/* Cartes de commentaires */
+.comment-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e8dcc4;
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.author-icon {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #9aad7c 0%, #6b8e23 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.author-label {
+    font-weight: 400;
+    color: #8b7355;
+    font-size: 0.95rem;
+    margin-right: 0.3rem;
+}
+
+.author-name {
+    font-weight: 700;
+    color: #556b2f;
+    font-size: 1.1rem;
+}
+
+.comment-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #8b7355;
+    font-size: 0.95rem;
+}
+
+.date-label {
+    font-weight: 500;
+    color: #8b7355;
+}
+
+.date-icon {
+    font-size: 1.2rem;
+}
+
+.comment-body {
+    color: #333;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.comment-body p {
+    margin: 0;
+    word-wrap: break-word;
+}
+
+
+/* ******************FIN PAGE LIVRE D'OR ******************************/
+
+/* ========================================
+   PAGE CRÉER UN COMMENTAIRE
+   Thème FamilyNature - Champs d'Olivier
+   ======================================== */
+
+.create-comment-page {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.create-comment-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(85, 107, 47, 0.3);
+    padding: 3rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.create-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.create-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: block;
+    box-shadow: 0 4px 15px rgba(85, 107, 47, 0.25);
+    border: 4px solid #6b8e23;
+    object-fit: cover;
+}
+
+.create-header h1 {
+    color: #556b2f;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.create-subtitle {
+    color: #6a6a5a;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.create-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.create-form .form-group label {
+    display: block;
+    color: #556b2f;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.create-form .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e8dcc4;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 200px;
+}
+
+.create-form .form-group textarea:focus {
+    outline: none;
+    border-color: #6b8e23;
+    box-shadow: 0 0 0 4px rgba(107, 142, 35, 0.1);
+    background: #fefdfb;
+}
+
+.create-form .form-group textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions .btn-block {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.05rem;
+}
+
+/* Responsive créer commentaire */
+@media (max-width: 768px) {
+    .create-comment-container {
+        padding: 2.5rem 2rem;
+        margin: 1rem;
+    }
+
+    .create-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .create-header h1 {
+        font-size: 1.9rem;
+    }
+
+    .create-subtitle {
+        font-size: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-comment-page {
+        padding: 2rem 0.5rem;
+    }
+
+    .create-comment-container {
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
+    }
+
+    .create-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .create-header {
+        margin-bottom: 2rem;
+    }
+
+    .create-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .create-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .create-form .form-group textarea {
+        padding: 0.85rem;
+        min-height: 180px;
+    }
+
+    .form-actions .btn-block {
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+}
+
+/* ******************FIN PAGE CRÉER COMMENTAIRE ******************************/
