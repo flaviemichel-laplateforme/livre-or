@@ -1,10 +1,9 @@
 <div class="auth-container">
-    <!-- Image à gauche -->
     <div class="auth-image">
         <img src="<?= url('assets/img/connexionfond7.jpg') ?>" alt="Image de connexion">
     </div>
 
-    <!-- Formulaire à droite -->
+
     <div class="auth-form">
         <div class="form-header">
             <img src="<?= url('assets/img/logo.png') ?>" alt="Logo FamilyNature" class="form-logo">
