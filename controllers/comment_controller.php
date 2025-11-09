@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Affiche la page du livre d'or (la liste des commentaires)
+ * Affiche la page du livre d'or
  * URL: /comment/livre_or
  */
 function comment_livre_or()

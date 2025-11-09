@@ -1,5 +1,4 @@
 <?php
-// Contrôleur de la page d'accueil
 
 /**
  * Affiche la page d'accueil

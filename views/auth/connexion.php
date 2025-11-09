@@ -1,6 +1,6 @@
 <div class="auth-container">
     <div class="auth-image">
-        <img src="<?= url('assets/img/connexionfond7.jpg') ?>" alt="Image de connexion">
+        <img src="<?= url('assets/img/connexionfond7.jpg') ?>" alt="Image de connexion,branche d'olivier">
     </div>
 
 

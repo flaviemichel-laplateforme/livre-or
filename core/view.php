@@ -1,5 +1,4 @@
 <?php
-// Système de vues et templating
 
 /**
  * Charge une vue avec des données

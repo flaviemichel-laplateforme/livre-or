@@ -1,14 +1,11 @@
 <?php
 
-// Fichier : models/comment_model.php
-
 /**
  * Récupère tous les commentaires avec le login de l'auteur,
  * classés du plus récent au plus ancien.
  */
 function get_all_comments_with_details()
 {
-    // 1. La requête SQL
     $query = "
         SELECT 
             commentaires.id, 
@@ -23,7 +20,7 @@ function get_all_comments_with_details()
             commentaires.date DESC
     ";
 
-    // 2. Exécuter et retourner les résultats
+
     return db_select($query);
 }
 

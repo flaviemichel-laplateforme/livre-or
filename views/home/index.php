@@ -2,7 +2,7 @@
 
 <div class="home-container">
     <section class="hero">
-        <h1>Bienvenue dans votre Album Familial</h1>
+        <h1>Bienvenue <?php if (is_logged_in()): ?><?= escape($_SESSION['user_login']) ?><?php endif; ?> dans votre Album Familial</h1>
         <p class="tagline">Partagez vos plus beaux moments avec ceux que vous aimez</p>
     </section>
 

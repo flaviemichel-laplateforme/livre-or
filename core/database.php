@@ -1,5 +1,4 @@
 <?php
-// Fonctions de base de données
 
 /**
  * Établit une connexion à la base de données

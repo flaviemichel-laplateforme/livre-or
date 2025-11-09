@@ -12,7 +12,6 @@ function create_user($login, $password)
     return false;
 }
 
-// Fichier : models/user_model.php
 
 /**
  * Récupère un utilisateur par son login pour la connexion.
@@ -42,14 +41,11 @@ function find_user_by_login($login)
     // db_select() retourne un tableau (vide ou non)
     $user_data = db_select($query, [$login]);
 
-    // !empty() est le test parfait.
+
     // Si $user_data N'EST PAS vide, ça retourne true (l'utilisateur existe).
     return !empty($user_data);
 }
 
-// ... (et on a toujours ta fonction create_user) ...
-
-// Fichier : models/user_model.php
 
 /**
  * Récupère un utilisateur par son ID.
@@ -65,18 +61,17 @@ function get_user_by_id($id)
     $result = db_select($query, [$id]);
 
     if (empty($result)) {
-        // Cas 1 : Utilisateur non trouvé
+        // Utilisateur non trouvé
         return false;
     } else {
-        // Cas 2 : Utilisateur trouvé, on retourne la première ligne
+        // Utilisateur trouvé, on retourne la première ligne
         return $result[0];
     }
 }
 
-// Fichier : models/user_model.php
 
 /**
- * Met à jour le mot de passe d'un utilisateur spécifique.
+ * Met à jour le mot de passe d'un utilisateur.
  */
 function update_user_password($user_id, $new_password)
 {
@@ -95,14 +90,15 @@ function update_user_password($user_id, $new_password)
 }
 
 
+
+/**
+ * Met à jour le login d'un utilisateur.
+ */
 function update_user_login($login, $user_id)
 {
 
-
-    // 2. Préparer la requête UPDATE
     $query = "UPDATE utilisateurs SET login = ? WHERE id = ?";
 
-    // 3. Exécuter la requête avec les deux paramètres
     if (db_execute($query, [$login, $user_id])) {
         return true; // Succès
     }

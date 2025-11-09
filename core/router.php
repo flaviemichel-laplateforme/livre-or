@@ -1,5 +1,4 @@
 <?php
-// Système de routing simple
 
 /**
  * Parse l'URL et retourne le contrôleur, l'action et les paramètres
