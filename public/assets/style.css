@@ -227,12 +227,113 @@ footer {
     box-shadow: 0 -3px 10px rgba(85, 107, 47, 0.2);
 }
 
+/* Navigation du footer */
+.footer-nav {
+    padding: 1.5rem 3rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0 0 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.footer-links li {
+    margin: 0;
+}
+
+.footer-links a {
+    color: #f5f0e6;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    display: block;
+}
+
+.footer-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
 footer p {
-    text-align: center;
-    padding: 1.5rem;
     margin: 0;
     color: #f5f0e6;
     font-size: 0.95rem;
+    text-align: center;
+}
+
+.github-link {
+    position: absolute;
+    right: 3rem;
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f5f0e6;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.github-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.github-link svg {
+    width: 24px;
+    height: 24px;
+}
+
+.github-link span {
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .footer-nav {
+        padding: 1.5rem 1rem 0;
+    }
+
+    .footer-links {
+        gap: 0.5rem;
+        padding: 0 0 1rem 0;
+    }
+
+    .footer-links a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .github-link {
+        position: static;
+    }
 }
 
 
