@@ -50,10 +50,6 @@
     </section>
 
     <?php if (is_logged_in()): ?>
-        <section class="welcome-user">
-            <h2>Bonjour <?= escape($_SESSION['user_login']) ?> !</h2>
-            <p>Racontez votre journée, partagez vos souvenirs et laissez une trace de vos moments précieux.</p>
-        </section>
 
         <section class="quick-actions">
             <div class="action-card">
@@ -150,7 +146,7 @@
                 </div>
 
                 <div class="preview-cta">
-                    <p class="preview-message">✨ Connectez-vous pour voir tous les messages et partager les vôtres !</p>
+                    <p class="preview-message">Connectez-vous pour voir tous les messages et partager les vôtres !</p>
                     <div class="preview-buttons">
                         <a href="<?= url('auth/connexion') ?>" class="btn btn-primary">Se connecter</a>
                         <a href="<?= url('auth/inscription') ?>" class="btn btn-secondary">Créer un compte</a>

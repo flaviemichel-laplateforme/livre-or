@@ -2,7 +2,7 @@
     <div class="livre-or-header">
         <img src="<?= url('assets/img/logo.png') ?>" alt="Logo FamilyNature" class="livre-or-logo">
         <h1>Livre d'Or</h1>
-        <p class="livre-or-subtitle">Tous les souvenirs partagés par la famille</p>
+        <p class="livre-or-subtitle">Tous les souvenirs sont partagés ici!</p>
 
         <?php if (is_logged_in()): ?>
             <a href="<?= url('comment/create') ?>" class="btn btn-primary btn-add-comment">

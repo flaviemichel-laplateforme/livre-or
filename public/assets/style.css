@@ -407,7 +407,7 @@ footer p {
     box-shadow: 0 4px 12px rgba(85, 107, 47, 0.15);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 3px solid #9aad7c;
+    border: 1px solid #9aad7c;
 }
 
 .action-card .icon {
@@ -1469,8 +1469,8 @@ footer p {
 
 /* Cartes de commentaires */
 .comment-card {
-    background: white;
-    border-radius: 15px;
+    background: rgb(245, 245, 237);
+    border-radius: 5px;
     padding: 2rem;
 
 }
@@ -1481,7 +1481,7 @@ footer p {
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #e8dcc4;
+    border-bottom: 2px solid #b38221;
 }
 
 .comment-author {
