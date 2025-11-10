@@ -1,7 +1,5 @@
 <?php
 
-// Fichier : controllers/user_controller.php
-
 /**
  * Affiche la page de profil (logique GET)
  */
@@ -69,7 +67,7 @@ function user_update_profile()
             }
         }
 
-        // --- LOGIQUE LOGIN (Priorité 2) ---
+
         // On arrive ici SEULEMENT si l'utilisateur N'A PAS changé son mot de passe.
         // On vérifie si le login tapé est différent de l'actuel.
         if ($login !== $current_user_data['login']) {
