@@ -6,40 +6,45 @@
         <p class="tagline">Partagez vos plus beaux moments avec ceux que vous aimez</p>
     </section>
 
-    <!-- Carrousel d'images -->
+    <!-- Carrousel d'images CSS pur -->
     <section class="carousel-section">
-        <div class="carousel-container">
-            <div class="carousel-slide active">
-                <img src="<?= url('assets/img/caroussel.jpg') ?>" alt="Photo famille 1">
-            </div>
-            <div class="carousel-slide">
-                <img src="<?= url('assets/img/caroussel2.jpg') ?>" alt="Photo famille 2">
-            </div>
-            <div class="carousel-slide">
-                <img src="<?= url('assets/img/caroussel3.jpg') ?>" alt="Photo famille 3">
-            </div>
-            <div class="carousel-slide">
-                <img src="<?= url('assets/img/caroussel4.jpg') ?>" alt="Photo famille 4">
-            </div>
-            <div class="carousel-slide">
-                <img src="<?= url('assets/img/caroussel5.jpg') ?>" alt="Photo famille 5">
-            </div>
-            <div class="carousel-slide">
-                <img src="<?= url('assets/img/caroussel6.jpg') ?>" alt="Photo famille 6">
+        <div class="carousel-container-css">
+            <input type="radio" name="carousel" id="slide1" checked>
+            <input type="radio" name="carousel" id="slide2">
+            <input type="radio" name="carousel" id="slide3">
+            <input type="radio" name="carousel" id="slide4">
+            <input type="radio" name="carousel" id="slide5">
+            <input type="radio" name="carousel" id="slide6">
+
+            <div class="carousel-slides">
+                <div class="carousel-slide-css">
+                    <img src="<?= url('assets/img/caroussel.jpg') ?>" alt="Photo famille 1">
+                </div>
+                <div class="carousel-slide-css">
+                    <img src="<?= url('assets/img/caroussel2.jpg') ?>" alt="Photo famille 2">
+                </div>
+                <div class="carousel-slide-css">
+                    <img src="<?= url('assets/img/caroussel3.jpg') ?>" alt="Photo famille 3">
+                </div>
+                <div class="carousel-slide-css">
+                    <img src="<?= url('assets/img/caroussel4.jpg') ?>" alt="Photo famille 4">
+                </div>
+                <div class="carousel-slide-css">
+                    <img src="<?= url('assets/img/caroussel5.jpg') ?>" alt="Photo famille 5">
+                </div>
+                <div class="carousel-slide-css">
+                    <img src="<?= url('assets/img/caroussel6.jpg') ?>" alt="Photo famille 6">
+                </div>
             </div>
 
-            <!-- Boutons de navigation -->
-            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-
-            <!-- Indicateurs -->
-            <div class="carousel-indicators">
-                <span class="indicator active" onclick="goToSlide(0)"></span>
-                <span class="indicator" onclick="goToSlide(1)"></span>
-                <span class="indicator" onclick="goToSlide(2)"></span>
-                <span class="indicator" onclick="goToSlide(3)"></span>
-                <span class="indicator" onclick="goToSlide(4)"></span>
-                <span class="indicator" onclick="goToSlide(5)"></span>
+            <!-- Navigation par labels -->
+            <div class="carousel-navigation">
+                <label for="slide1" class="carousel-indicator"></label>
+                <label for="slide2" class="carousel-indicator"></label>
+                <label for="slide3" class="carousel-indicator"></label>
+                <label for="slide4" class="carousel-indicator"></label>
+                <label for="slide5" class="carousel-indicator"></label>
+                <label for="slide6" class="carousel-indicator"></label>
             </div>
         </div>
     </section>
@@ -59,14 +64,14 @@
             </div>
 
             <div class="action-card">
-                <span class="icon">📖</span>
+                <span class="icon">📜</span>
                 <h3>Livre d'or</h3>
                 <p>Découvrez tous les souvenirs et messages partagés par la famille</p>
                 <a href="<?= url('comment/livre_or') ?>" class="btn btn-primary">Voir le livre d'or</a>
             </div>
 
             <div class="action-card">
-                <span class="icon">👤</span>
+                <span class="icon">👨</span>
                 <h3>Mon profil</h3>
                 <p>Gérez vos informations personnelles et votre compte</p>
                 <a href="<?= url('user/profile') ?>" class="btn btn-primary">Voir mon profil</a>
@@ -124,14 +129,35 @@
             </div>
         </section>
 
-        <section class="cta-section">
-            <h2>Rejoignez votre famille !</h2>
-            <p>Commencez à partager vos souvenirs dès aujourd'hui</p>
-            <div class="cta-buttons">
-                <a href="<?= url('auth/inscription') ?>" class="btn btn-primary btn-large">Créer un compte</a>
-                <a href="<?= url('auth/connexion') ?>" class="btn btn-secondary btn-large">Se connecter</a>
-            </div>
-        </section>
+        <!-- Aperçu des commentaires récents -->
+        <?php if (!empty($recent_comments)): ?>
+            <section class="preview-comments">
+                <h2>Derniers messages partagés</h2>
+                <p class="preview-subtitle">Découvrez quelques messages de notre communauté</p>
+
+                <div class="preview-cards">
+                    <?php foreach ($recent_comments as $comment): ?>
+                        <div class="preview-card">
+                            <div class="preview-blur">
+                                <p class="preview-text"><?= escape(substr($comment['commentaire'], 0, 100)) ?>...</p>
+                                <div class="preview-meta">
+                                    <span class="preview-author">Par <?= escape($comment['login']) ?></span>
+                                    <span class="preview-date">Le <?= date('d/m/Y', strtotime($comment['date'])) ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div class="preview-cta">
+                    <p class="preview-message">✨ Connectez-vous pour voir tous les messages et partager les vôtres !</p>
+                    <div class="preview-buttons">
+                        <a href="<?= url('auth/connexion') ?>" class="btn btn-primary">Se connecter</a>
+                        <a href="<?= url('auth/inscription') ?>" class="btn btn-secondary">Créer un compte</a>
+                    </div>
+                </div>
+            </section>
+        <?php endif; ?>
 
         <section class="how-it-works">
             <h2>Comment ça marche ?</h2>
@@ -155,46 +181,3 @@
         </section>
     <?php endif; ?>
 </div>
-
-<script>
-    // Carrousel automatique
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const indicators = document.querySelectorAll('.indicator');
-    const totalSlides = slides.length;
-
-    // Fonction pour afficher une slide spécifique
-    function showSlide(n) {
-        // Retour au début ou à la fin si nécessaire
-        if (n >= totalSlides) {
-            currentSlide = 0;
-        } else if (n < 0) {
-            currentSlide = totalSlides - 1;
-        } else {
-            currentSlide = n;
-        }
-
-        // Masquer toutes les slides
-        slides.forEach(slide => slide.classList.remove('active'));
-        indicators.forEach(indicator => indicator.classList.remove('active'));
-
-        // Afficher la slide actuelle
-        slides[currentSlide].classList.add('active');
-        indicators[currentSlide].classList.add('active');
-    }
-
-    // Fonction pour changer de slide (boutons précédent/suivant)
-    function changeSlide(direction) {
-        showSlide(currentSlide + direction);
-    }
-
-    // Fonction pour aller directement à une slide (indicateurs)
-    function goToSlide(n) {
-        showSlide(n);
-    }
-
-    // Défilement automatique toutes les 5 secondes
-    setInterval(() => {
-        changeSlide(1);
-    }, 5000);
-</script>

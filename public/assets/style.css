@@ -1,7 +1,6 @@
-/* ========================================
-   THÈME GÉNÉRAL - CHAMPS D'OLIVIER
+/*
    Palette: Vert olive, Beige, Doré, Terre
-   ======================================== */
+*/
 
 :root {
     --olive-dark: #556b2f;
@@ -49,7 +48,7 @@ header {
     margin-bottom: 2rem;
 }
 
-/* Logo et Brand */
+/* Logo et slogan */
 .header-brand {
     flex: 0 0 auto;
 }
@@ -89,7 +88,7 @@ header {
     color: #f5f0e6;
 }
 
-/* Navigation */
+/* Barre de navigation */
 nav {
     flex: 1;
     display: flex;
@@ -155,9 +154,9 @@ nav {
 
 /* FIN DU HEADER CSS */
 
-/* ========================================
+/*
    MESSAGES FLASH
-   ======================================== */
+*/
 
 .flash-messages {
     position: fixed;
@@ -220,6 +219,7 @@ nav {
 
 /* FIN MESSAGES FLASH */
 
+/* Footer */
 
 footer {
     background: linear-gradient(135deg, #6b8e23 0%, #556b2f 100%);
@@ -336,11 +336,11 @@ footer p {
     }
 }
 
+/*********FIN DU FOOTER ********************/
 
-/* ========================================
-   STYLES PAGE D'ACCUEIL - FamilyNature
-   Thème Champs d'Olivier
-   ======================================== */
+/* 
+   STYLES PAGE D'ACCUEIL 
+*/
 
 .home-container {
     max-width: 1200px;
@@ -371,7 +371,7 @@ footer p {
     font-style: italic;
 }
 
-/* Welcome User */
+/* Bienvenue utilisateur  */
 .welcome-user {
     background: linear-gradient(135deg, #f5f0e6 0%, #e8dcc4 100%);
     padding: 2rem;
@@ -410,11 +410,6 @@ footer p {
     border-top: 3px solid #9aad7c;
 }
 
-.action-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(107, 142, 35, 0.25);
-}
-
 .action-card .icon {
     font-size: 3rem;
     display: block;
@@ -430,6 +425,47 @@ footer p {
     color: #6a6a5a;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+}
+
+
+.action-card-livre {
+    background: #fefdfb;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(85, 107, 47, 0.15);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid #ded827;
+}
+
+
+
+.action-card-livre:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(107, 142, 35, 0.25);
+}
+
+.action-card-livre .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.action-card-livre h3 {
+    color: #556b2f;
+    margin-bottom: 1rem;
+}
+
+.action-card-livre p {
+    color: #6a6a5a;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.action-card-livre .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
 }
 
 /* Features Section */
@@ -528,6 +564,96 @@ footer p {
 .benefit-card p {
     color: #6a6a5a;
     line-height: 1.6;
+}
+
+/* Preview Comments Section */
+.preview-comments {
+    background: linear-gradient(135deg, #f5f0e6 0%, #fefdfb 100%);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin: 3rem 0;
+    box-shadow: 0 6px 25px rgba(85, 107, 47, 0.15);
+}
+
+.preview-comments h2 {
+    text-align: center;
+    color: #556b2f;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.preview-subtitle {
+    text-align: center;
+    color: #6a6a5a;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.preview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.preview-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(85, 107, 47, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-blur {
+    filter: blur(2px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.preview-text {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.preview-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #6a6a5a;
+}
+
+.preview-author {
+    font-weight: bold;
+    color: #556b2f;
+}
+
+.preview-date {
+    color: #8b7355;
+}
+
+.preview-cta {
+    text-align: center;
+    background: linear-gradient(135deg, #6b8e23 0%, #556b2f 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+}
+
+.preview-message {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #fefdfb;
+    font-weight: 500;
+}
+
+.preview-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* CTA Section */
@@ -648,6 +774,23 @@ footer p {
     box-shadow: 0 3px 10px rgba(85, 107, 47, 0.3);
 }
 
+.btn-livre {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-livre btn-primary {
+    background: linear-gradient(135deg, #6b8e23 0%, #556b2f 100%);
+    color: white;
+    box-shadow: 0 3px 10px rgba(85, 107, 47, 0.3);
+}
+
 .btn-primary:hover {
     background: linear-gradient(135deg, #556b2f 0%, #3d4f21 100%);
     transform: translateY(-2px);
@@ -681,7 +824,8 @@ footer p {
     padding: 0;
 }
 
-.carousel-container {
+/* Container du carrousel */
+.carousel-container-css {
     position: relative;
     width: 100%;
     max-width: 1200px;
@@ -693,62 +837,71 @@ footer p {
     background: #f5f0e6;
 }
 
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+/* Masquer les radio buttons */
+.carousel-container-css input[type="radio"] {
+    display: none;
+}
+
+/* Container des slides */
+.carousel-slides {
+    display: flex;
+    width: 600%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    animation: carousel-auto 30s infinite;
+}
+
+
+
+/* Chaque slide */
+.carousel-slide-css {
+    width: 16.666%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
-.carousel-slide.active {
-    opacity: 1;
-    z-index: 1;
-}
-
-.carousel-slide img {
+.carousel-slide-css img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     object-position: center;
 }
 
-/* Boutons de navigation */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(85, 107, 47, 0.7);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-    border-radius: 8px;
+/* Navigation manuelle - override de l'animation */
+#slide1:checked~.carousel-slides {
+    animation: none;
+    transform: translateX(0);
 }
 
-.carousel-btn:hover {
-    background: rgba(85, 107, 47, 0.9);
-    transform: translateY(-50%) scale(1.1);
+#slide2:checked~.carousel-slides {
+    animation: none;
+    transform: translateX(-16.666%);
 }
 
-.carousel-btn.prev {
-    left: 20px;
+#slide3:checked~.carousel-slides {
+    animation: none;
+    transform: translateX(-33.333%);
 }
 
-.carousel-btn.next {
-    right: 20px;
+#slide4:checked~.carousel-slides {
+    animation: none;
+    transform: translateX(-50%);
 }
 
-/* Indicateurs (points) */
-.carousel-indicators {
+#slide5:checked~.carousel-slides {
+    animation: none;
+    transform: translateX(-66.666%);
+}
+
+#slide6:checked~.carousel-slides {
+    animation: none;
+    transform: translateX(-83.333%);
+}
+
+/* Indicateurs de navigation */
+.carousel-navigation {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -758,7 +911,7 @@ footer p {
     z-index: 10;
 }
 
-.indicator {
+.carousel-indicator {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -766,14 +919,21 @@ footer p {
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid rgba(85, 107, 47, 0.5);
+    display: block;
 }
 
-.indicator:hover {
+.carousel-indicator:hover {
     background: rgba(255, 255, 255, 0.8);
     transform: scale(1.2);
 }
 
-.indicator.active {
+/* Indicateur actif */
+#slide1:checked~.carousel-navigation label:nth-child(1),
+#slide2:checked~.carousel-navigation label:nth-child(2),
+#slide3:checked~.carousel-navigation label:nth-child(3),
+#slide4:checked~.carousel-navigation label:nth-child(4),
+#slide5:checked~.carousel-navigation label:nth-child(5),
+#slide6:checked~.carousel-navigation label:nth-child(6) {
     background: #6b8e23;
     border-color: white;
     transform: scale(1.3);
@@ -829,10 +989,9 @@ footer p {
 
 /* ******************FIN PAGE ACCUEIL *******************************/
 
-/* ========================================
+/* 
    PAGES AUTHENTIFICATION (INSCRIPTION / CONNEXION)
-   Th�me FamilyNature - Champs d'Olivier
-   ======================================== */
+ */
 
 .auth-container {
     display: flex;
@@ -845,7 +1004,7 @@ footer p {
     max-width: 1200px;
 }
 
-/* Image � gauche - Ajust�e */
+/* Image  */
 .auth-image {
     flex: 1;
     min-width: 45%;
@@ -864,7 +1023,7 @@ footer p {
     object-position: center;
 }
 
-/* Formulaire � droite */
+/* Formulaire de droite */
 .auth-form {
     flex: 1;
     padding: 3rem 4rem;
@@ -1044,10 +1203,9 @@ footer p {
 
 /* ******************FIN PAGES AUTHENTIFICATION ******************************/
 
-/* ========================================
+/* 
    PAGE PROFIL UTILISATEUR
-   Thème FamilyNature - Champs d'Olivier
-   ======================================== */
+*/
 
 .profile-page {
     min-height: calc(100vh - 200px);
@@ -1214,10 +1372,9 @@ footer p {
 
 /* ******************FIN PAGE PROFIL ******************************/
 
-/* ========================================
+/* 
    PAGE LIVRE D'OR
-   Thème FamilyNature - Champs d'Olivier
-   ======================================== */
+*/
 
 .livre-or-page {
     max-width: 1200px;
@@ -1389,10 +1546,10 @@ footer p {
 
 /* ******************FIN PAGE LIVRE D'OR ******************************/
 
-/* ========================================
+/* 
    PAGE CRÉER UN COMMENTAIRE
    Thème FamilyNature - Champs d'Olivier
-   ======================================== */
+*/
 
 .create-comment-page {
     min-height: calc(100vh - 200px);
