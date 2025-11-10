@@ -155,25 +155,6 @@
             </section>
         <?php endif; ?>
 
-        <section class="how-it-works">
-            <h2>Comment ça marche ?</h2>
-            <div class="steps">
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <h4>Créez votre compte</h4>
-                    <p>Inscrivez-vous en quelques secondes avec un login et un mot de passe</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <h4>Connectez-vous</h4>
-                    <p>Accédez à l'espace familial avec vos identifiants</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <h4>Partagez vos moments</h4>
-                    <p>Écrivez vos messages et consultez ceux de votre famille</p>
-                </div>
-            </div>
-        </section>
+
     <?php endif; ?>
 </div>
