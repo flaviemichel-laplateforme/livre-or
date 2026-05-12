@@ -7,7 +7,7 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
-define('BASE_URL', '/livre-or/public');
+define('BASE_URL', '/livreor/public');
 define('APP_NAME', 'livreor');
 define('APP_VERSION', '1.0.0');
 
