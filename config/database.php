@@ -8,7 +8,7 @@ define('DB_CHARSET', 'utf8');
 
 // Configuration générale de l'application
 define('BASE_URL', '/livre-or/public');
-define('APP_NAME', 'livre-or');
+define('APP_NAME', 'livreor');
 define('APP_VERSION', '1.0.0');
 
 // Configuration des chemins
