@@ -1,91 +1,76 @@
-# Livre d'Or
+# 📖 Livre d'Or - Documentation Technique & Déploiement
 
 Application PHP MVC permettant la création et la gestion d'un livre d'or en ligne.
 
-## 📋 Description
+## 📋 Présentation du Projet
 
-**Livre d'Or** est une application web basée sur l'architecture **MVC (Model-View-Controller)** qui permet aux utilisateurs de :
+Livre d'Or est une application web dynamique développée en PHP natif selon une architecture MVC (Modèle-Vue-Contrôleur). Ce projet a été conçu pour offrir une plateforme sécurisée de partage de commentaires entre utilisateurs authentifiés.
+Fonctionnalités Clés
 
-- S'inscrire et se connecter
-- Consulter les commentaires du livre d'or
-- Ajouter leurs propres commentaires
-- Gérer leur profil utilisateur
+- Système d'Authentification : Inscription, connexion sécurisée et gestion de session.
 
-## 🏗️ Architecture
+- Gestion des Profils : Espace utilisateur pour la modification des informations personnelles.
 
-L'application suit une structure MVC classique avec séparation des préoccupations :
+- Livre d'Or Interactif : Consultation publique et publication de commentaires pour les membres connectés.
 
-```
+- Sécurité : Hachage des mots de passe (bcrypt) et protection contre les injections SQL (PDO).
+
+## 🏗️ Architecture du Projet (MVC Maison)
+
+L'application repose sur une séparation stricte des responsabilités pour garantir la maintenabilité :
+Plaintext
+
+```text
 livre-or/
 ├── config/              # Configuration de l'application
-│   └── database.php    # Connexion à la base de données
+│   └── database.php     # Connexion à la base de données
 ├── controllers/         # Contrôleurs (logique métier)
-│   ├── auth_controller.php
-│   ├── comment_controller.php
-│   ├── home_controller.php
-│   └── user_controller.php
-├── core/               # Fichiers core du framework
-│   ├── database.php    # Classe de gestion de la BD
-│   ├── router.php      # Système de routage
-│   └── view.php        # Gestion des vues
-├── models/             # Modèles (accès aux données)
-│   ├── comment_model.php
-│   └── user_model.php
-├── views/              # Vues (templates HTML)
-│   ├── auth/           # Pages d'authentification
-│   ├── comment/        # Pages de commentaires
-│   ├── errors/         # Pages d'erreur
-│   ├── home/           # Page d'accueil
-│   ├── layout/         # Layouts principaux
-│   └── user/           # Pages utilisateur
-├── includes/           # Fichiers utilitaires
-│   └── helpers.php
-├── public/             # Racine web (point d'entrée)
+├── core/                # Routage, base de données, vues
+├── includes/            # Fonctions utilitaires
+├── models/              # Modèles (accès aux données)
+├── public/              # Point d'entrée web
 │   ├── index.php
-│   └── assets/
-│       ├── style.css
-│       └── img/
-├── livreor.sql         # Structure de la base de données
-└── README.md           # Ce fichier
+│   └── .htaccess
+├── views/               # Vues HTML
+└── livreor.sql          # Structure de la base de données
 ```
 
-## 🚀 Installation
+## Fonctionnement MVC
 
-### Prérequis
+- [config/database.php](config/database.php) centralise les paramètres de connexion et la base d'URL.
+- [public/index.php](public/index.php) est le point d'entrée unique de l'application.
+- [core/router.php](core/router.php) lit l'URL et appelle le bon contrôleur.
+- Les contrôleurs orchestrent la logique.
+- Les modèles gèrent les requêtes SQL.
+- Les vues affichent les pages.
 
-- PHP 8.1 ou supérieur
-- MySQL 8.0 ou supérieur
-- Serveur web (Apache, Nginx, etc.)
-- Laragon ou équivalent
+## 🛠️ Installation Locale (Développement)
 
-### Étapes d'installation
+## Prérequis
 
-1. **Cloner ou télécharger le projet**
+- PHP 8.1 ou supérieur,
+- MySQL 8.0 ou supérieur,
+- Laragon, XAMPP ou un environnement équivalent.
 
-   ```bash
-   cd c:\laragon\www
-   git clone <repository-url> livre-or
-   ```
+Étapes d'installation
 
-2. **Créer la base de données**
-   - Importer le fichier `livreor.sql` dans MySQL
+    Cloner le projet : git clone https://github.com/votre-compte/livre-or.git
 
-   ```bash
-   mysql -u root < livreor.sql
-   ```
+    Importer la base de données située à la racine.
 
-3. **Configurer la base de données** (si nécessaire)
-   - Éditer [config/database.php](config/database.php)
-   - Adapter les identifiants DB_USER et DB_PASS si nécessaire
+    Configurer les accès dans config/database.php.
 
-4. **Accéder à l'application**
-   ```
-   http://localhost/livre-or/public
-   ```
+    Pointer votre serveur web sur le dossier /public.
 
-## 🗄️ Base de données
+Exemple d'accès local :
 
-### Tables
+```text
+http://localhost/livre-or/public
+```
+
+## Base de données
+
+### Tables principales
 
 #### `utilisateurs`
 
@@ -97,75 +82,69 @@ livre-or/
 
 #### `commentaires`
 
-| Colonne        | Type     | Description                               |
-| -------------- | -------- | ----------------------------------------- |
-| id             | INT      | Clé primaire auto-incrémentée             |
-| commentaire    | TEXT     | Contenu du commentaire                    |
-| id_utilisateur | INT      | Référence à l'utilisateur (clé étrangère) |
-| date           | DATETIME | Date et heure du commentaire              |
+| Colonne        | Type     | Description                   |
+| -------------- | -------- | ----------------------------- |
+| id             | INT      | Clé primaire auto-incrémentée |
+| commentaire    | TEXT     | Contenu du commentaire        |
+| id_utilisateur | INT      | Référence vers l'utilisateur  |
+| date           | DATETIME | Date et heure du commentaire  |
 
-## 🔀 Routage
+## Procédure de déploiement professionnel sur Plesk
 
-L'application utilise un système de routage URL-based :
+Cette partie présente le passage du projet en ligne sur un hébergement Plesk. L'objectif était de reproduire un déploiement simple mais réaliste : dépôt Git connecté au serveur, application servie depuis le bon dossier, et base de données importée sur l'environnement de production.
 
-```
-URL : http://localhost/livre-or/public/?url=controller/action/param1/param2
-```
+### 1. Création et connexion du dépôt Git
 
-### Routes principales
+Le projet a d'abord été déclaré dans Plesk comme dépôt distant. L'URL du dépôt GitHub a été renseignée, puis la branche main a été choisie comme source de déploiement.
 
-- `/` - Accueil
-- `/auth/connexion` - Page de connexion
-- `/auth/inscription` - Page d'inscription
-- `/auth/deconnexion` - Déconnexion
-- `/comment/livre_or` - Affichage du livre d'or
-- `/comment/create` - Créer un commentaire
-- `/user/profile` - Profil utilisateur
+La capture ci-dessous montre l'interface Git de Plesk et confirme que le dépôt est bien pris en charge par le serveur.
 
-## 🔐 Authentification
+![Interface Git dans Plesk](public/assets/img/02-plesk-dev-tools.png)
 
-- Système de session PHP natif
-- Mots de passe hashés (à implémenter avec `password_hash()`)
-- Vérification de session à chaque accès
+La création du dépôt dans Plesk a ensuite été effectuée via le formulaire dédié, avec la cible de déploiement vers le répertoire du site.
 
-## 📝 Fichiers clés
+![Création du dépôt dans Plesk](public/assets/img/04-plesk-create-repository.png)
 
-- **[public/index.php](public/index.php)** - Point d'entrée principal
-- **[core/router.php](core/router.php)** - Système de routage et dispatching
-- **[config/database.php](config/database.php)** - Configuration et variables globales
-- **[controllers/home_controller.php](controllers/home_controller.php)** - Contrôleur principal
+Après la mise en place, un pull a permis de récupérer les fichiers du projet sur l'hébergement.
 
-## 🛠️ Utilisation
+![Déploiement du dépôt Git sur Plesk](public/assets/img/06-plesk-git-deployment.png)
 
-### Créer un contrôleur
+### 2. Configuration de la réécriture d'URL
 
-1. Créer un fichier `nomcontroleur_controller.php` dans `/controllers`
-2. Implémenter les actions (méthodes)
-3. Accéder via `/?url=nomcontroleur/action`
+Mon application suit une architecture MVC. Pour que les routes fonctionnent correctement, le fichier .htaccess redirige les requêtes vers le point d'entrée de l'application, tout en gardant l'accès aux ressources statiques comme les images et les feuilles de style.
 
-### Créer une vue
+Cette étape est importante car elle évite l'accès direct aux dossiers sensibles comme config, core, models ou controllers.
 
-1. Créer un fichier `.php` dans `/views` avec la structure appropriée
-2. Utiliser la fonction `render()` depuis le contrôleur
+![Règles de réécriture .htaccess](public/assets/img/03-htaccess-rewrite-rules.png)
 
-### Utiliser les modèles
+La capture suivante montre également la version du fichier .htaccess utilisée dans le dépôt GitHub.
 
-1. Créer une classe dans `/models`
-2. Implémenter les méthodes d'accès aux données
-3. Instancier et utiliser dans le contrôleur
+![Fichier .htaccess dans le dépôt GitHub](public/assets/img/07-github-htaccess-file.png)
 
-## 📦 Dépendances
+### 3. Mise en place de l'arborescence sur le serveur
 
-- Aucune dépendance externe requise (framework maison)
+Une fois le dépôt synchronisé, j'ai vérifié la présence du projet dans le dossier cible du serveur, ici le répertoire httpdocs. Cette vérification permet de confirmer que les fichiers sont bien copiés au bon emplacement.
 
-## 📄 Licence
+![Arborescence du site dans httpdocs](public/assets/img/08-file-manager-httpdocs.png)
 
-Non spécifiée
+### 4. Création et import de la base de données
 
-## ✅ Statut
+La base de données a été créée depuis l'interface Plesk, puis le script SQL du projet a été importé via phpMyAdmin. Enfin, le fichier de configuration de l'application a été mis à jour avec les informations de connexion de l'environnement de production.
 
-Version 1.0.0 - En développement
+![Gestion des bases de données dans Plesk](public/assets/img/05-plesk-databases.png)
 
----
+![Import et contrôle dans phpMyAdmin](public/assets/img/phpmyadmin.png)
 
-**Dernière mise à jour :** Mai 2026
+### 5. Vérification du site en ligne
+
+Une fois le déploiement terminé, j'ai contrôlé le bon affichage de la page d'accueil et la cohérence générale de l'interface.
+
+![Aperçu du site en ligne](public/assets/img/01-home-page.png)
+
+### Bilan du déploiement
+
+Le site est maintenant accessible en ligne via Plesk. Cette mise en production m'a permis de valider plusieurs compétences attendues dans le cadre du titre DWWM : gestion d'un hébergement, déploiement via Git, configuration d'un environnement PHP, import de base de données et sécurisation d'une application MVC.
+
+## 📝 Auteur
+
+Michel Flavie – Développeuse Web & Web Mobile
